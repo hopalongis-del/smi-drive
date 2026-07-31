@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><title>Test</title></head>
+<body>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+console.log('THREE loaded, revision:', THREE.REVISION);
+console.log('Mesh:', typeof THREE.Mesh);
+console.log('WebGLRenderer:', typeof THREE.WebGLRenderer);
+const r = new THREE.WebGLRenderer();
+console.log('WebGLRenderer created OK, canvas:', !!r.domElement);
+document.body.appendChild(r.domElement);
+r.render(new THREE.Scene(), new THREE.PerspectiveCamera());
+console.log('SUCCESS: Three.js works!');
+</script>
+</body></html>

@@ -1,0 +1,19 @@
+# SMI Drive — static site on Render
+# Dashboard: New → Blueprint → connect this repo
+# Or: New → Static Site → root `.` · build empty · publish `.`
+services:
+  - type: web
+    name: smi-drive
+    runtime: static
+    plan: free
+    branch: main
+    buildCommand: "true"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=300
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
